@@ -2,8 +2,9 @@
 #include <stdio.h>
 
 /**
- * @a: array
+ * a: array
  * @n: length of array
+ * print_array: print an array
  */
 
 void print_array(int *a, int n)
