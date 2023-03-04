@@ -2,7 +2,7 @@
 
 /**
  * main - main block
- * Description: Get a random number, check its last digit, then compare it with 5
+ * Description: Get a random number, check its last digit, then compare with 5
  * Return: 0
  */
 
