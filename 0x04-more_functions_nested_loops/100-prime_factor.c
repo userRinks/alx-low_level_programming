@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 
 /**
  * main - main; checking numbers
@@ -10,13 +11,13 @@ int main(void)
 	int i;
 	long number = 612852475143;
 
-	for (number = 2; number < i; number++)
+	for (i = (int) sqrt(number); i > 2; number++)
 	{
-		if (i % number == 0)
+		if (number % i == 0)
 		{
-			i = i / number;
+			printf("%d\n", i);
+			break;
 		}
 	}
-	printf("%ld\n", number);
 	return (0);
 }
