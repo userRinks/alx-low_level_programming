@@ -2,7 +2,7 @@
 
 /**
 * main - no longer causes an infinite loop
-*	- bug in code edited out as comment
+* Description: bug in code edited out as comment
 * Return: 0
 */
 
