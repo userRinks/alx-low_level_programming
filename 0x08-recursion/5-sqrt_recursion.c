@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * _sqrt_recursion - return square root
@@ -8,7 +9,7 @@
 
 int _sqrt_recursion(int n)
 {
-	return (root(n, 1));
+	return (solve(n, 1));
 }
 
 /**
