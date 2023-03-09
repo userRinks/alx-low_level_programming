@@ -2,50 +2,50 @@
 
 /**
  * last_index - return last index of string
- * @s: pointer
- * Return: integer
+ * @s: pointer to string
+ * Return: int
  */
 
 int last_index(char *s)
 {
-	int i = 0;
+	int n = 0;
 
 	if (*s > '\0')
-		i += last_index(s + 1) + 1;
-	return (i);
+		n += last_index(s + 1) + 1;
+
+	return (n);
 }
 
 /**
- * is_palindrome - check for palindrome
- * am_i_pal: variable
- * @s: string
- * @*s: pointer
+ * is_palindrome - check if a string is a palindrome
+ * @s: string to check
  * Return: 0 or 1
  */
 
 int is_palindrome(char *s)
 {
-	int am_i_pal;
-	int fin = last_index(s);
+	int end = last_index(s);
 
-	return ((s, 0, fin - 1, fin % 2));
+	return (check(s, 0, end - 1, end % 2));
 }
 
 /**
- * am_i_pal - check if number is palindrome
+ * check - checker for the palindrome
  * @s: string
- * @init: starts from initial letter to final letter
- * @fin: starts from final letter to initial letter
- * @p: variable integer
+ * @start: int moves from right to left
+ * @end: int moves from left to right
+ * @pair: int
  * Return: 0 or 1
  */
 
-int am_i_pal(char *s, int init, int fin, int p)
+
+int check(char *s, int start, int end, int pair)
 {
-	if ((init == fin && p != 0) || (init == fin + 1 && p == 0))
+
+	if ((start == end && pair != 0) || (start == end + 1 && pair == 0))
 		return (1);
-	else if (s[init] != s[fin])
+	else if (s[start] != s[end])
 		return (0);
 	else
-		return (am_i_pal(s, init + 1, fin - 1, p));
+		return (check(s, start + 1, end - 1, pair));
 }
