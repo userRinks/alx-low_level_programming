@@ -12,11 +12,12 @@ int last_index(char *s)
 
 	if (*s > '\0')
 		i += last_index(s + 1) + 1;
-	return (n);
+	return (i);
 }
 
 /**
  * is_palindrome - check for palindrome
+ * am_i_pal: variable
  * @s: string
  * @*s: pointer
  * Return: 0 or 1
@@ -24,9 +25,10 @@ int last_index(char *s)
 
 int is_palindrome(char *s)
 {
+	int am_i_pal;
 	int fin = last_index(s);
 
-	return (am_i_pal(s, 0, fin - 1, fin % 2));
+	return ((s, 0, fin - 1, fin % 2));
 }
 
 /**
