@@ -12,5 +12,5 @@
 
 void _puts(char *s)
 {
-	return (puts(s));
+	puts(s);
 }
