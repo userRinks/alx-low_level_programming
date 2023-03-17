@@ -7,6 +7,7 @@
  * @n: bytes
  * Return: string
  */
+
 char *_memset(char *s, char b, unsigned int n)
 {
 	unsigned int i;
@@ -19,11 +20,12 @@ char *_memset(char *s, char b, unsigned int n)
 }
 
 /**
- * _calloc - allocates memory for an array using malloc
+ * _calloc - allocate memory for an array using malloc
  * @nmemb: n elements
  * @size: bytes
  * Return: pointer
  */
+
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	void *p;
@@ -33,7 +35,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	p = malloc(nmemb * size);
 
 	if (p == NULL)
-	    return (NULL);
+    return (NULL);
 	_memset(p, 0, (nmemb * size));
-	  return (p);
+    return (p);
 }
