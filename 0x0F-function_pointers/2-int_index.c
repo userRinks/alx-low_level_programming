@@ -6,7 +6,7 @@
  * @size: int
  * @cmp: function pointer
  * Return: index of first element that matches with `cmp`
- * 	or -1 if none found
+ *	or -1 if none found
  */
 
 int int_index(int *array, int size, int (*cmp)(int))
