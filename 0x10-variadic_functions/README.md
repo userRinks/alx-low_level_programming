@@ -1,0 +1,1 @@
+Using macros, headers, constant and variable arguments to manipulate C strings.
