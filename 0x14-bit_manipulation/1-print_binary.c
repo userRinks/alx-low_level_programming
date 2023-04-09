@@ -3,26 +3,43 @@
 #include <limits.h>
 
 /**
- * print_binary - compute and print numbers in binary without stack overflow
+ * print_binary_helper - prevent stack overflow, print most significant bits
+ * @n: integer
+ * @msb: most significant bits
+ */
+
+void print_binary_helper(unsigned long int n, int msb)
+{
+	if (n == 0 || msb == -1)
+	{
+		return;
+	}
+	print_binary_helper(n >> 1, msb - 1);
+	putchar((n & 1) ? '1' : '0');
+}
+
+
+/**
+ * print_binary - prevent stack overflow, print most significant bits
  * @n: integer
  */
 
 void print_binary(unsigned long int n)
 {
-	int bits = sizeof(unsigned long int) * CHAR_BIT;
+	int msb = -1;
+	unsigned long int tmp = n;
 
-	int most_significant_bits = 0;
-
-	for (int i = bits - 1; i >= 0; i--)
+	while (tmp > 0)
 	{
-		if ((n >> i) & 1)
-		{
-			most_significant_bits = i;
-			break;
-		}
+		tmp >>= 1;
+		msb++;
 	}
-	for (int i = most_significant_bits; i >= 0; i--)
+	if (msb == -1)
 	{
-		putchar((n & (1UL << i)) ? '1' : '0');
+		putchar('0');
+	}
+	else
+	{
+		print_binary_helper(n, msb);
 	}
 }
