@@ -22,8 +22,7 @@ Below is a table summarizing the function of each file:
 | 4-pow_recursion.c        | Calculates the power of a number recursively                   |
 | 5-sqrt_recursion.c       | Calculates the square root of a number recursively             |
 | 6-is_prime_number.c      | Checks if a number is prime using recursion                    |
-
-| **Advanced**             |                                                                |
+| **Advanced**             |                                                               |
 | 100-is_palindrome.c      | Checks if a string is a palindrome using recursion             |
 | 101-wildcmp.c            | Compares two strings and returns 1 if they are identical, 0 otherwise |
 
