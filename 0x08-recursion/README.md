@@ -14,7 +14,7 @@ This repository contains a collection of files related to recursion. Each file s
 Below is a table summarizing the function of each file:
 | File Name                | Function                                                      |
 |--------------------------|---------------------------------------------------------------|
-| **Simple**               |
+| **Simple**               |                                                               |
 | 0-puts_recursion.c       | Prints a string recursively                                    |
 | 1-print_rev_recursion.c  | Prints a string in reverse using recursion                     |
 | 2-strlen_recursion.c     | Calculates the length of a string recursively                  |
@@ -23,7 +23,7 @@ Below is a table summarizing the function of each file:
 | 5-sqrt_recursion.c       | Calculates the square root of a number recursively             |
 | 6-is_prime_number.c      | Checks if a number is prime using recursion                    |
 
-| **Advanced**             |
+| **Advanced**             |                                                                |
 | 100-is_palindrome.c      | Checks if a string is a palindrome using recursion             |
 | 101-wildcmp.c            | Compares two strings and returns 1 if they are identical, 0 otherwise |
 
@@ -32,7 +32,8 @@ Below is a table summarizing the function of each file:
 
 ### Example 1: Printing a String in Reverse
 
-The file `1-print_rev_recursion.c` contains a function `print_rev_recursion` that takes a string as input and prints it in reverse order. It achieves this by using recursion to print the last character of the string, and then recursively calling itself with the remaining substring excluding the last character. This process continues until the entire string is printed in reverse order.
+The file `1-print_rev_recursion.c` contains a function `print_rev_recursion` that takes a string as input and prints it in reverse order. It achieves this by using recursion to print the last character of the string, and then recursively calling itself with the remaining substring excluding the last character.
+This process continues until the entire string is printed in reverse order.
 
 **File:** `1-print_rev_recursion.c`
 
