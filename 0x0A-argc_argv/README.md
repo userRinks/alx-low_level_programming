@@ -5,8 +5,8 @@ This repository contains C programs that demonstrate the usage of command line a
 ## Overview
 The `argc` and `argv` are parameters commonly used in C programming to handle command line arguments. These parameters allow you to pass values to a program when it is executed from the command line.
 
-    - `argc` stands for "argument count" and represents the number of command line arguments passed to the program.
-    - `argv` stands for "argument vector" and is an array of strings that holds the actual command line arguments.
+- `argc` stands for "argument count" and represents the number of command line arguments passed to the program.
+- `argv` stands for "argument vector" and is an array of strings that holds the actual command line arguments.
 
 When the user runs a C program from the command line, the first argument (`argv[0]`) is always the name of the program itself. The subsequent arguments, if any, are passed as additional elements in the `argv` array.
 
@@ -38,7 +38,8 @@ To compile and run the programs, use the following steps:
 Replace `program_name` with the desired name for the executable and `program_file.c` with the corresponding source file.
 
 Run the program by executing the generated executable:
-    ```bash
+    
+    ```
     ./program_name [arguments]
     ```
 
@@ -47,11 +48,9 @@ Run the program by executing the generated executable:
 ### Simple Programs
 
 Running `0-whatsmyname.c`:
-
-```bash
-./0-whatsmyname Hello World
-
-```
+    ```
+    ./0-whatsmyname Hello World
+    ```
 
 Output:
 ```
@@ -59,19 +58,20 @@ Program name: ./0-whatsmyname
 ```
 
 
-Running 1-args.c:
+Running `1-args.c`:
 ```
 ./1-args Hello World
 ```
 
 Output:
+
 ```
 Number of arguments: 3
 ```
 
 ### Advanced Programs
 
-Running 100-change.c:
+Running `100-change.c`:
 
 ```
 ./100-change 97
