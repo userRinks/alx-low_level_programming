@@ -14,16 +14,16 @@ Below is a table summarizing the function of each file:
 | File Name                | Function                                                      |
 |--------------------------|---------------------------------------------------------------|
 | **Simple**               |                                                               |C
-| 0-create_array.c         | Creates an array of characters and initializes it with a specific character  |
-| 1-strdup.c               | Duplicates a string using dynamic memory allocation                          |
-| 2-str_concat.c           | Concatenates two strings dynamically                                         |
-| 3-alloc_grid.c           | Dynamically creates a 2-dimensional array (grid) of integers                 |
-| 4-free_grid.c            | Frees the memory allocated for a 2-dimensional array                         |
-| **Advanced**             |                                                                |
-| 100-argstostr.c          | Concatenates all the arguments passed to the program as strings              |
-| 101-strtow.c             | Splits a string into words and stores them in an array of strings            |
-| **Header**               |                                                                |
-| main.h                   | Header file containing all necessary function prototypes for compilation     |
+| `0-create_array.c`         | Creates an array of characters and initializes it with a specific character  |
+| `1-strdup.c`               | Duplicates a string using dynamic memory allocation                          |
+| `2-str_concat.c`           | Concatenates two strings dynamically                                         |
+| `3-alloc_grid.c`           | Dynamically creates a 2-dimensional array (grid) of integers                 |
+| `4-free_grid.c`            | Frees the memory allocated for a 2-dimensional array                         |
+| **Advanced**               |                                                                |
+| `100-argstostr.c`          | Concatenates all the arguments passed to the program as strings              |
+| `101-strtow.c`             | Splits a string into words and stores them in an array of strings            |
+| **Header**                 |                                                                |
+| `main.h`                   | Header file containing all necessary function prototypes for compilation     |
 
 ## Examples
 
@@ -53,7 +53,7 @@ char *create_array(unsigned int size, char c)
                 return (NULL);
         }
 
-        /*Define values with malloc*/
+        /* Define values with malloc */
         buffer = (char *) malloc(size * sizeof(c));
 
         if (buffer == 0)
@@ -150,7 +150,7 @@ char *argstostr(int ac, char **av)
 When we call `argstostr` with the following arguments:
 
 ```Terminal
-$ ./a.out ALX$ School #cisfun
+$ ./a.out ALX School #cisfun
 ```
 
 We can expect the following output:
@@ -159,5 +159,7 @@ ALX
 School
 #cisfun
 ```
+
+
 
 Feel free to modify and explore these examples further to understand the functionality of the respective functions.
