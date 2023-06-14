@@ -38,6 +38,7 @@ char *str_concat(char *s1, char *s2)
 	{
 		l1 = _strlen(s1);
 	}
+
 	if (!s2)
 	{
 		s2 = "";
@@ -46,18 +47,22 @@ char *str_concat(char *s1, char *s2)
 	{
 		l2 = _strlen(s2);
 	}
+
 	conc = malloc(l1 + l2 + 1);
 	if (!conc)
 	{
 		return (0);
 	}
+
 	tmp = conc;
+
 	while (*s1)
 	{
 		*tmp++ = *s1++;
 	}
+
 	while ((*tmp++ = *s2++))
-	{
-		return (conc);
-	}
+		;
+
+	return (conc);
 }
