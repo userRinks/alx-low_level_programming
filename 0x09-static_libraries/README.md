@@ -42,6 +42,7 @@ Below is a table summarizing the purpose and functionality of each necessary fil
 | `5-strstr.c`     | Locates a substring within a string    |
 | `6-abs.c`        | Computes the absolute value of an integer |
 | `9-strcpy.c`     | Copies a string                        |
+| `_putchar.c`     | [Not pushed] Pass argument to stdout   |
 | **Test file**  |                                        |
 | `main.c`         | Test file to demonstrate library usage  |
 | **Other**      |                                        |    
