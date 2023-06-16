@@ -1,166 +1,142 @@
-#include "main.h"
-
-#include "bootcamp.h"
-#include <limits.h>
-
-/**
- * str_len - Finds the length of a string.
- * @str: Input pointer to string.
- * Return: Length of the string.
- */
-int str_len(char *str)
-{
-	int length;
-
-	for (length = 0; *str != '\0'; length++)
-		length++, str++;
-	return (length / 2);
-}
-
-/**
- * _calloc - Allocates memory for an array using malloc.
- * @bytes: Bytes of memory needed per size requested.
- * @size: Size in bytes of each element.
- * Return: Pointer to the allocated memory.
- */
-void *_calloc(unsigned int bytes, unsigned int size)
-{
-	unsigned int i;
-	char *ptr;
-
-	if (bytes == 0 || size == 0)
-		return (NULL);
-	if (size >= UINT_MAX / bytes || bytes >= UINT_MAX / size)
-		return (NULL);
-	ptr = malloc(size * bytes);
-	if (ptr == NULL)
-		return (NULL);
-	for (i = 0; i < bytes * size; i++)
-		ptr[i] = 0;
-	return ((void *)ptr);
-}
-
-/**
- * add_arrays - Adds two arrays of integers.
- * @mul_result: Pointer to array with numbers from the product.
- * @sum_result: Pointer to array with numbers from the total sum.
- * @length: Length of both arrays.
- * Return: void
- */
-void add_arrays(int *mul_result, int *sum_result, int length)
-{
-	int i = 0, length2 = length - 1, carry = 0, sum;
-
-	while (i < length)
-	{
-		sum = carry + mul_result[length2] + sum_result[length2];
-		sum_result[length2] = sum % 10;
-		carry = sum / 10;
-		i++;
-		length2--;
-	}
-}
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 /**
  * is_digit - Checks if a character is a digit.
- * @c: Input character to check.
- * Return: 0 on failure, 1 on success.
+ * @c: The character to check.
+ * Return: 1 if the character is a digit, 0 otherwise.
  */
 int is_digit(char c)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	printf("Error\n");
-	return (0);
+	return (c >= '0' && c <= '9');
 }
 
 /**
- * multiply - Multiplies two numbers and prints the result.
- * @factor1: Factor number 1 (the smaller of the two numbers).
- * @len1: Length of factor 1.
- * @factor2: Factor number 2 (the larger of the two numbers).
- * @len2: Length of factor 2.
- * @length: Length of the result arrays.
- * Return: Pointer to the result array.
+ * Times - Performs the actual multiplication.
+ * @num1: The first number as a string.
+ * @num2: The second number as a string.
+ * @len1: The length of the first number.
+ * @len2: The length of the second number.
+ * Return: The resulting array of the multiplication.
  */
-int *multiply(char *factor1, int len1, char *factor2, int len2, int length)
+int *Times(char *num1, char *num2, int len1, int len2)
 {
-	int i = 0, index1 = len1 - 1;
-	int index2, product, carry, digit, *mul_result, *sum_result;
+	int len_r = len1 + len2;
+	int *result = (int *)calloc(len_r, sizeof(int));
+	int i, j, carry, product;
 
-	sum_result = _calloc(sizeof(int), length);
-	while (i < len1)
-	{
-		mul_result = _calloc(sizeof(int), length);
-		index2 = len2 - 1, digit = (length - 1 - i);
-		if (!is_digit(factor1[index1]))
-			return (NULL);
-		carry = 0;
-		while (index2 >= 0)
-		{
-			if (!is_digit(factor2[index2]))
-				return (NULL);
-			product = (factor1[index1] - '0') * (factor2[index2] - '0');
-			product += carry;
-			mul_result[digit] += product % 10;
-			carry = product / 10;
-			digit--, index2--;
-		}
-		add_arrays(mul_result, sum_result, length);
-		free(mul_result);
-	    i++, index1--;
-	}
-	return (sum_result);
-}
-
-/**
- * print_result - Prints the resulting array.
- * @result: Pointer to the array with numbers to print.
- * @length: Length of the result array.
- * Return: void
- */
-void print_result(int *result, int length)
-{
-	int i = 0;
-
-	while (result[i] == 0 && i < length)
-		i++;
-	if (i == length)
-		_putchar('0');
-	while (i < length)
-		_putchar(result[i++] + '0');
-	_putchar('\n');
-}
-
-/**
- * main - Multiplies two input numbers of large lengths and prints the result.
- * @argc: Input count of arguments.
- * @argv: Input array of string arguments.
- * Return: 0 on success.
- */
-int main(int argc, char **argv)
-{
-	int len1, len2, length, temp, *result;
-	char *factor1, *factor2;
-
-	if (argc != 3)
+	if (result == NULL)
 	{
 		printf("Error\n");
 		exit(98);
 	}
-	len1 = str_len(argv[1]), len2 = str_len(argv[2]);
-	length = len1 + len2;
-	if (len1 < len2)
-		factor1 = argv[1], factor2 = argv[2];
-	else
+
+	for (i = len1 - 1; i >= 0; i--)
 	{
-		factor1 = argv[2], factor2 = argv[1];
-		temp = len2, len2 = len1, len1 = temp;
+		carry = 0;
+		for (j = len2 - 1; j >= 0; j--)
+		{
+			product = (num1[i] - '0') * (num2[j] - '0') + carry + result[i + j + 1];
+			result[i + j + 1] = product % 10;
+			carry = product / 10;
+		}
+		result[i] += carry;
 	}
-	result = multiply(factor1, len1, factor2, len2, length);
-	if (result == NULL)
-		exit(98);
-	print_result(result, length);
-	return (0);
+
+	return (result);
 }
 
+/**
+ * printResult - Prints the result.
+ * @result: The array containing the result.
+ * @len_r: The length of the result array.
+ */
+void printResult(int *result, int len_r)
+{
+	int i = 0;
+
+	while (i < len_r && result[i] == 0)
+		i++;
+
+	if (i == len_r)
+	{
+		putchar('0');
+		putchar('\n');
+	}
+	else
+	{
+		while (i < len_r)
+		{
+			putchar(result[i] + '0');
+			i++;
+		}
+		putchar('\n');
+	}
+}
+
+/**
+ * multiply - Multiplies two positive numbers.
+ * @num1: The first number as a string.
+ * @num2: The second number as a string.
+ */
+void multiply(char *num1, char *num2)
+{
+	int len1 = 0, len2 = 0;
+	int *result;
+
+	while (num1[len1] && is_digit(num1[len1]))
+		len1++;
+
+	while (num2[len2] && is_digit(num2[len2]))
+		len2++;
+
+	result = Times(num1, num2, len1, len2);
+
+	printResult(result, len1 + len2);
+
+	free(result);
+}
+
+/**
+ * main - Entry point of the program.
+ * @argc: The number of command-line arguments.
+ * @argv: An array of command-line argument strings.
+ * Return: 0 on success, 98 on failure.
+ */
+int main(int argc, char **argv)
+{
+	char *num1, *num2;
+	int i;
+
+	if (argc != 3)
+	{
+		printf("Error\n");
+		return (98);
+	}
+
+	num1 = argv[1];
+	num2 = argv[2];
+
+	for (i = 0; num1[i]; i++)
+	{
+		if (!is_digit(num1[i]))
+		{
+			printf("Error\n");
+			return (98);
+			}
+	}
+
+	for (i = 0; num2[i]; i++)
+	{
+		if (!is_digit(num2[i]))
+		{
+			printf("Error\n");
+			return (98);
+		}
+	}
+
+	multiply(num1, num2);
+
+	return (0);
+}
