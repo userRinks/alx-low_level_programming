@@ -33,7 +33,7 @@ To use these files, you can follow these steps:
 1. Clone the repository to your local machine using the following command:
 
 ```
-git clone https://github.com/your_username/your_repository.git
+git clone https://github.com/userRinks/alx-low_level_programming.git
 ```
 
 2. Navigate to the repository's directory:
