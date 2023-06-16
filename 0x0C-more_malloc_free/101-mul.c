@@ -1,126 +1,106 @@
 #include "main.h"
 #include <ctype.h>
+#include <string.h>
 
 /**
- * _is_zero - determines if any number is zero
- * @argv: argument vector.
- * @mul
- * @num1
- * @num2
- * Return: no return.
+ * is_valid_number - checks if a string contains only digits
+ * @num: string to check
+ * Return: 1 if valid number
+ *	   0 if otherwise
  */
-void _is_zero(char *argv[])
+int is_valid_number(char *num)
 {
-	int i, isn1 = 1, isn2 = 1;
+	int i;
 
-	for (i = 0; argv[1][i]; i++)
-		if (argv[1][i] != '0')
-		{
-			isn1 = 0;
-			break;
-		}
-
-	for (i = 0; argv[2][i]; i++)
-		if (argv[2][i] != '0')
-		{
-			isn2 = 0;
-			break;
-		}
-
-	if (isn1 == 1 || isn2 == 1)
+	for (i = 0; num[i]; i++)
 	{
-		printf("0\n");
-		exit(0);
+		if (!isdigit(num[i]))
+			return (1);
 	}
+
+	return (0);
 }
 
 /**
- * _initialize_array - set memery to zero in a new array
- * @ar: char array.
- * @lar: length of the char array.
- *
- * Return: pointer of a char array.
+ * multiply - performs the multiplication of two numbers
+ * @num1: first number
+ * @num2: second number
+ * Return: pointer to the result string
  */
-char *_initialize_array(char *ar, int lar)
+char *multiply(char *num1, char *num2)
 {
-	int i = 0;
+	int len1, len2, lenout, i, j, k, carry;
+	char *result;
 
-	for (i = 0; i < lar; i++)
-		ar[i] = '0';
-	ar[lar] = '\0';
-	return (ar);
-}
+	len1 = strlen(num1);
+	len2 = strlen(num2);
+	lenout = len1 + len2;
+	result = malloc(sizeof(char) * (lenout + 1));
 
-/**
- * _checknum - determines length of the number
- * and checks if number is in base 10.
- * @argv: arguments vector.
- * @n: row of the array.
- *
- * Return: length of the number.
- */
-int _checknum(char *argv[], int n)
-{
-	int ln;
+	if (result == NULL)
+	{
+		printf("Error\n");
+		exit(98);
+	}
 
-	for (ln = 0; argv[n][ln]; ln++)
-		if (!isdigit(argv[n][ln]))
+	for (i = 0; i < lenout; i++)
+		result[i] = '0';
+	result[lenout] = '\0';
+
+	for (i = len1 - 1; i >= 0; i--)
+	{
+		carry = 0;
+
+		for (j = len2 - 1, k = lenout - (len1 - i); j >= 0; j--, k--)
 		{
-			printf("Error\n");
-			exit(98);
+			int digit = (num1[i] - '0') * (num2[j] - '0') + (result[k] - '0') + carry;
+
+			result[k] = (digit % 10) + '0';
+			carry = digit / 10;
 		}
 
-	return (ln);
+		if (carry > 0)
+			result[k] = (carry % 10) + '0';
+	}
+
+	return (result);
 }
 
 /**
- * main - Entry point.
- * program that multiplies two positive numbers.
- * @argc: number of arguments.
- * @argv: arguments vector.
- *
- * Return: 0 - success.
+ * main - Entry point
+ * @argc: number of arguments
+ * @argv: array of arguments
+ * Return: 0 on success
+ *	   1 if otherwise
  */
 int main(int argc, char *argv[])
 {
-	int ln1, ln2, lnout, add, addl, i, j, k, ca;
-	char *nout;
+	char *num1, *num2, *result;
 
 	if (argc != 3)
-		printf("Error\n"), exit(98);
-	ln1 = _checknum(argv, 1), ln2 = _checknum(argv, 2);
-	_is_zero(argv), lnout = ln1 + ln2, nout = malloc(lnout + 1);
-	if (nout == NULL)
-		printf("Error\n"), exit(98);
-	nout = _initialize_array(nout, lnout);
-	k = lnout - 1, i = ln1 - 1, j = ln2 - 1, ca = addl = 0;
-	for (; k >= 0; k--, i--)
 	{
-		if (i < 0)
-		{
-			if (addl > 0)
-			{
-				add = (nout[k] - '0') + addl;
-				if (add > 9)
-					nout[k - 1] = (add / 10) + '0';
-				nout[k] = (add % 10) + '0';
-			}
-			i = ln1 - 1, j--, addl = 0, ca++, k = lnout - (1 + ca);
-		}
-		if (j < 0)
-		{
-			if (nout[0] != '0')
-				break;
-			lnout--;
-			free(nout), nout = malloc(lnout + 1), nout = _initialize_array(nout, lnout);
-			k = lnout - 1, i = ln1 - 1, j = ln2 - 1, ca = addl = 0;
-		}
-		if (j >= 0)
-		{
-			add = ((argv[1][i] - '0') * (argv[2][j] - '0')) + (nout[k] - '0') + addl;
-			addl = add / 10, nout[k] = (add % 10) + '0';
-		}
+		printf("Error\n");
+		return (98);
 	}
-	printf("%s\n", nout);
+
+	num1 = argv[1];
+	num2 = argv[2];
+
+	if (!is_valid_number(num1) || !is_valid_number(num2))
+	{
+		printf("Error\n");
+		return (98);
+	}
+
+	if (strcmp(num1, "0") == 0 || strcmp(num2, "0") == 0)
+	{
+		printf("0\n");
+		return (0);
+	}
+
+	result = multiply(num1, num2);
+	printf("%s\n", result);
+	free(result);
+
 	return (0);
 }
