@@ -6,7 +6,7 @@ The "0x0F - Function Pointers" project introduces the concept of function pointe
 
 ## Description
 
-The "0x0F - Function Pointers" project contains several files that demonstrate different aspects of function pointers and their practical usage. Each file focuses on a specific use case and showcases the power and flexibility of function pointers in C programming.
+This project contains several files that demonstrate different aspects of function pointers and their practical usage. Each file focuses on a specific use case and showcases the power and flexibility of function pointers in C programming.
 
 The files included in this project are:
 
