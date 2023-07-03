@@ -4,7 +4,7 @@ This repository contains several files that demonstrate the concepts of Singly L
 
 ## Overview
 
-A singly linked list is a linear data structure composed of nodes, where each node contains a value and a pointer to the next node. The last node in the list points to NULL, indicating the end of the list.
+A singly linked list is a linear data structure composed of nodes, where each node contains a value and a pointer to the next node. The last node in the list points to `NULL`, indicating the end of the list.
 
 In this repository, you will find the following files related to singly linked lists:
 
@@ -20,15 +20,15 @@ In this repository, you will find the following files related to singly linked l
 | `100-first.c`   | Function executed before main, demonstrating attribute usage  |
 | `101-hello_holberton.asm`  | Assembly code to print "Hello, Holberton"                     |
 | **Header**    |                                                                   |
-| lists.h                  | Header file with function prototypes and struct declarations  |
+| `lists.h`                  | Header file with function prototypes and struct declarations  |
 
 ## Usage
 
 To use the functionalities provided by the linked list files, follow these steps:
 
 1. Clone this repository to your local machine:
-```
-$ git clone https://github.com/userRinks/alx-low_level_programming.git
+```bash
+git clone https://github.com/userRinks/alx-low_level_programming.git
 ```
 
 2. Include the `lists.h` header file in your C program:
@@ -37,12 +37,12 @@ $ git clone https://github.com/userRinks/alx-low_level_programming.git
 ```
 
 3. Compile your C program with the required source files:
-```
-$ gcc your_program.c 0-print_list.c 1-list_len.c 2-add_node.c 3-add_node_end.c 4-free_list.c -o your_program
+```bash
+gcc your_program.c 0-print_list.c 1-list_len.c 2-add_node.c 3-add_node_end.c 4-free_list.c -o your_program
 ```
 
 4. Execute your program:
-```
+```shell
 $ ./your_program
 ```
 
@@ -92,13 +92,13 @@ size_t print_list(const list_t *h)
 
 To use the `print_list` function with an example, follow these steps:
 
-1. Include the lists.h header file in your C program.
+1. Include the `lists.h` header file in your C program.
 2. Create a linked list of student names and populate it with elements.
 3. Call the `print_list` function, passing the head of the linked list as an argument.
 4. The function will print all the elements of the linked list, along with their corresponding indices.
 
 Example usage:
-```
+```c
 #include <stdio.h>
 #include "lists.h"
 
@@ -124,7 +124,7 @@ int main(void)
 ```
 
 Output:
-```
+```bash
 [0] Alice
 [1] Bob
 [2] Charlie
@@ -137,7 +137,7 @@ The `100-first.c` file contains the `before_main` function, which is executed be
 
 File: `100-first.c`
 
-```
+```c
 #include "lists.h"
 
 /**
@@ -158,7 +158,7 @@ To use the `before_main` function, follow these steps:
 3. The function will be executed automatically when the program starts.
 
 Example usage:
-```
+```c
 #include <stdio.h>
 #include "lists.h"
 
@@ -175,7 +175,7 @@ int main(void)
 ```
 
 Output:
-```
+```shell
 Welcome to My Program!
 Get ready to explore the world of C programming!
 
