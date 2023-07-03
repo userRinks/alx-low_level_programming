@@ -1,10 +1,12 @@
 # 0x14: C - More Singly Linked Lists
 
-This repository builds upon the previous repository on Singly Linked Lists and provides additional functionality and operations for working with linked lists in the C programming language. Linked lists are a fundamental data structure that allow for efficient storage and manipulation of data elements. This collection of files showcases various operations and tasks that can be performed on linked lists, expanding on the concepts introduced in the previous repository.
+This repository builds upon the previous repository on singly linked lists and provides additional functionality and operations for working with linked lists in the C programming language. Linked lists are a fundamental data structure that allow for efficient storage and manipulation of data elements. This collection of files showcases various operations and tasks that can be performed on linked lists, expanding on the concepts introduced in the previous repository.
 
 ## Overview
 
-Linked lists offer a dynamic and flexible way to organize and manage data. Unlike arrays, linked lists do not require contiguous memory allocation, allowing for efficient insertion and deletion of elements at any position. Each element in a linked list, known as a node, contains a data field and a reference to the next node. This structure enables traversing the list by following the next pointers from one node to another.
+Linked lists offer a dynamic and flexible way to organize and manage data.
+
+Unlike arrays, linked lists do not require contiguous memory allocation, allowing for efficient insertion and deletion of elements at any position. Each element in a linked list, known as a *node*, contains a data field and a reference to the next node. This structure enables traversing the list by following the next pointers from one node to another.
 
 The provided functions in this repository cover essential operations on linked lists, including printing the elements, adding nodes at the beginning or end, deleting nodes, finding loops, and more. These functions can be used to manipulate linked lists based on specific requirements and provide a foundation for building more complex data structures and algorithms.
 
@@ -206,7 +208,7 @@ int main(void)
 ```
 
 To compile and run the code, you can use the following commands:
-```shell
+```bash
 gcc -Wall -Wextra -Werror -pedantic 5-free_listint2.c main.c -o free_listint2
 ./free_listint2
 ```
@@ -215,7 +217,7 @@ In this example, we created a linked list with three nodes, each containing an i
 
 The `free_listint2` function is used to free the memory allocated for the linked list. After calling the function, the memory used by the linked list will be freed.
 
-### Example 3: Example 3: Finding a loop in a `listint_t` list
+### Example 3: Finding a loop in a `listint_t` list
 
 The file `103-find_loop.c` contains a function `find_listint_loop` that finds a loop in a `listint_t` list.
 
@@ -261,8 +263,10 @@ listint_t *find_listint_loop(listint_t *head)
 
 Example application:
 
-1. We create a linked list with a loop. Let's assume the list has the following nodes: 1 -> 2 -> 3 -> 4 -> 5 -> 3 (loop back to node 3).
-2. We call the find_listint_loop function, passing the head of the linked list as an argument.
+1. We create a linked list with a loop. Let's assume the list has the following nodes:
+    `1 -> 2 -> 3 -> 4 -> 5 -> 3` (loop back to node 3).
+
+2. We call the `find_listint_loop` function, passing the head of the linked list as an argument.
 3. The function detects the loop in the linked list and returns the address of the node where the loop starts.
 4. We can use this returned address for further analysis or operations.
 
@@ -297,7 +301,7 @@ int main(void)
 }
 ```
 Expected Output:
-```shell
+```bash
 Loop detected! Loop starts at address: 0xADDRESS_OF_NODE3
 ```
 
