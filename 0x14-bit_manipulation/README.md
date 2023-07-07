@@ -61,7 +61,7 @@ To use the functions in this repository, follow the steps below:
 
 2. Compile the C files using your preferred compiler. For example, using `gcc`:
     ```bash
-    gcc -Wall -Wextra -Werror -pedantic -o program <filename.c> main.c
+    gcc -Wall -Wextra -Werror -pedantic -o program <filename.c>
     ```
 Replace `<filename.c>` with the name of the file you want to compile.
 
@@ -124,19 +124,21 @@ void print_binary(unsigned long int n)
 
 You can use the `print_binary` function to print the binary representation of a number as follows:
 
-    ```
+Example file: `answer.c`
+```c
     unsigned int num = 42;
     printf("Binary representation of %u: ", num);
     print_binary(num);
     printf("\n");
-    ```
-    
-    Input:
-    ```
-    num = 42
-    ```
+```
+
+```bash
+gcc -Wall -Wextra -Werror -pedantic -o print_bin 1-print_binary.c answer.c
+```
+
 Expected Output:
 ```bash
+./print_bin
 Binary representation of 42: 101010
 ```
 
@@ -172,23 +174,26 @@ You can use the `get_endianness` function to check the endianness of your system
 ```c
 int endian = get_endianness();
 if (endian == 1)
-{
-    printf("Big Endian\n");
-}
-else
-{
-    printf("Little Endian\n");
-}
+    {
+        printf("Big Endian\n");
+    }
+
+    else
+    {
+        printf("Little Endian\n");
+    }
 ```
 
 The output will depend on the endianness of your system. If your system is Big Endian, it will print:
-    ```bash
-    Big Endian
-    ```
+```bash
+Big Endian
+```
+
 If your system is Little Endian, it will print:
-    ```bash
-    Little Endian
-    ```
+```bash
+Little Endian
+```
+
 In the above example, we call the `get_endianness` function to check the endianness of the system. If the return value is `1`, it means the system is Big Endian, and if the return value is `0`, it means the system is Little Endian. The corresponding message is then printed accordingly.
 
 You can run this code on your system to determine its endianness.
@@ -197,7 +202,7 @@ You can run this code on your system to determine its endianness.
 
 The file `crackme3_hacker.c` contains a function `crack_password` that cracks a 4-digit password and prints it.
 
-File: crackme3_hacker.c
+File: `crackme3_hacker.c`
 ```c
 #include <stdio.h>
 
@@ -247,7 +252,15 @@ The password is extracted using bitwise operations on the hexadecimal value `0x4
 
 The expected output when running the program will be the cracked password.
 
-After compiling and running `crackme3_hacker.c`, you can copy the password to a file named `101-password`. Then, you can run the crackme3 program with the password as an argument:
+After compiling and running `crackme3_hacker.c`, you can copy the password to a file named `101-password`.
+Example:
+```bash
+gcc crackme3_hacker.c -o cracked_pass
+
+./cracked_pass > 101-password
+```
+
+Then, you can run the `crackme3` program with the password as an argument:
 
 ```bash
 $ ./crackme3 `cat 101-password`
