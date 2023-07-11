@@ -12,9 +12,9 @@ In C, file I/O operations are typically performed using file descriptors. A file
 
 By default, C provides three file descriptors:
 
-	- `stdin` (file descriptor 0) - Standard Input, typically connected to the keyboard for reading input.
-	- `stdout` (file descriptor 1) - Standard Output, typically connected to the terminal for writing output.
-	- `stderr` (file descriptor 2) - Standard Error, used for writing error messages to the terminal.
+- `stdin` (file descriptor 0) - Standard Input, typically connected to the keyboard for reading input.
+- `stdout` (file descriptor 1) - Standard Output, typically connected to the terminal for writing output.
+- `stderr` (file descriptor 2) - Standard Error, used for writing error messages to the terminal.
 
 ### Opening a File
 To perform File I/O operations, you first need to open the file using the `open()` system call. The `open()` function allows you to open a file and returns a file descriptor that you can use for subsequent operations.
@@ -25,9 +25,9 @@ To perform File I/O operations, you first need to open the file using the `open(
 int open(const char *filename, int flags, mode_t mode);
 ```
 
-	- `filename` is the name of the file to be opened.
-	- `flags` specify the mode in which the file should be opened (e.g., read-only, write-only, or both). You can use flags like *`O_RDONLY`*, *`O_WRONLY`*, and *`O_RDWR`* for different access modes.
-	- *`mode`* is the permission mode of the file (e.g., read, write, execute) in octal format. It is only used when creating a new file.
+- `filename` is the name of the file to be opened.
+- `flags` specify the mode in which the file should be opened (e.g., read-only, write-only, or both). You can use flags like *`O_RDONLY`*, *`O_WRONLY`*, and *`O_RDWR`* for different access modes.
+- `mode` is the permission mode of the file (e.g., read, write, execute) in octal format. It is only used when creating a new file.
 
 ### Reading from a File
 Once you have opened a file for reading, you can use functions like `read()` or `fgets()` to read its contents. The `read()` function reads a specified number of bytes from the file into a buffer.
@@ -38,9 +38,9 @@ Once you have opened a file for reading, you can use functions like `read()` or 
 ssize_t read(int fd, void *buffer, size_t count);
 ```
 
-	- `fd` is the file descriptor of the open file.
-	- `buffer` is the memory location where the data will be stored.
-	- `count` is the maximum number of bytes to read.
+- `fd` is the file descriptor of the open file.
+- `buffer` is the memory location where the data will be stored.
+- `count` is the maximum number of bytes to read.
 
 ### Writing to a File
 When a file is opened for writing, you can use functions like `write()` or `fprintf()` to write data to the file. The `write()` function writes a specified number of bytes from a buffer to the file.
@@ -51,9 +51,9 @@ When a file is opened for writing, you can use functions like `write()` or `fpri
 ssize_t write(int fd, const void *buffer, size_t count);
 ```
 
-	- `fd` is the file descriptor of the open file.
-	- `buffer` is the memory location containing the data to be written.
-	- `count` is the number of bytes to write.
+- `fd` is the file descriptor of the open file.
+- `buffer` is the memory location containing the data to be written.
+- `count` is the number of bytes to write.
 
 ### Closing a File
 After performing the necessary read or write operations, it is important to close the file using the `close()` system call. Closing the file releases the resources associated with it and updates any changes made to the file.
@@ -64,18 +64,18 @@ After performing the necessary read or write operations, it is important to clos
 int close(int fd);
 ```
 
-	- `fd` is the file descriptor of the file to be closed.
+- `fd` is the file descriptor of the file to be closed.
 
 ### File I/O Flags
 When opening a file, you can use various flags to control the behavior of the file descriptor. Some commonly used flags include:
 
-	- `O_RDONLY`	 -	 Open the file in read-only mode.
-	- `O_WRONLY`	 -	 Open the file in write-only mode.
-	- `O_RDWR`	 -	 Open the file in read-write mode.
-	- `O_CREAT`	 -	 Create the file if it does not exist.
-	- `O_APPEND`	 -	 Append data to the end of the file.
-	- `O_TRUNC`	 -	 Truncate the file if it exists.
-	- `O_EXCL`	 -	 Used with `O_CREAT`, ensures that the file is newly created.
+- `O_RDONLY`	 -	 Open the file in read-only mode.
+- `O_WRONLY`	 -	 Open the file in write-only mode.
+- `O_RDWR`	 -	 Open the file in read-write mode.
+- `O_CREAT`	 -	 Create the file if it does not exist.
+- `O_APPEND`	 -	 Append data to the end of the file.
+- `O_TRUNC`	 -	 Truncate the file if it exists.
+- `O_EXCL`	 -	 Used with `O_CREAT`, ensures that the file is newly created.
 
 These flags can be combined using the bitwise *OR* operator (`|`) to specify the desired file access and behavior.
 
